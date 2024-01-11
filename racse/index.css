@@ -1,0 +1,56 @@
+body {
+    position: absolute;
+    margin: 0px;
+    padding: 0px;
+    background-color: aliceblue;
+    text-align: center;
+}
+
+div#gamepad{
+    margin: 50%;
+    height: 100%;
+    width: 100%;
+}
+
+div{
+    float: left;
+    height: 60px;
+    width: 60px;
+}
+.pressed{
+    background-color: goldenrod;
+}
+.triggers{
+    height: 120px;
+    background: fixed;
+    background-color: crimson;
+}
+.bumpers{
+    height: 120px;
+    background-color: green;
+}
+.analog{
+    height: 240px;
+    background-color: coral;
+}
+.sticks{
+    height: 120px;
+    background-color: hotpink;
+}
+.face{
+    height: 240px;
+    background-color: dodgerblue;
+}
+.dpad{
+    height: 240px;
+    background-color: wheat;
+}
+.special{
+    height: 180px;
+    background-color: yellow;
+}
+.ps{
+    display: none;
+    height: 240px;
+    background-color: blueviolet;
+}

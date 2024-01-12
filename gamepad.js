@@ -9,20 +9,8 @@ const rightY = document.getElementsByClassName("rightY")[0];
 // const start = document.getElementsByClassName("start")[0];
 
 let gamepadInput = {};
-let isRaw = false;
 
 var isChromium = !!navigator.userAgentData && navigator.userAgentData.brands.some(data => data.brand == 'Chromium');
-
-window.addEventListener("gamepadconnected",(e) => {
-
-    // if(e.gamepad.id === "DualSense Wireless Controller (STANDARD GAMEPAD Vendor: 054c Product: 0ce6)")
-    if(e.gamepad.id === "054c-0ce6-DualSense Wireless Controller")
-        isRaw = true;
-
-    console.log("Gamepad connected");
-    InitButtons();
-    CheckStatus();
-})
 
 function InitButtons()
 {
@@ -57,6 +45,7 @@ function InitButtons()
     // buttons[15] - ?
 
 
+
     //chromium
 
     //axes[0] - left X          (left-1;right+1)
@@ -83,30 +72,7 @@ function InitButtons()
     // buttons[16] - PS/Home
     // buttons[17] - ?
 
-    if(isRaw)
-    {
-        document.getElementsByClassName("ps")[0].style.display = "block";
-
-        gamepadInput = [
-            "X",
-            "A",
-            "B",
-            "Y",
-            "leftBumper",
-            "rightBumper",
-            "leftTriggerButton",
-            "rightTriggerButton",
-            "select",
-            "start",
-            "leftStick",
-            "rightStick",
-            "home",
-            "touch",
-            "mic",
-            null
-        ]
-    }
-    else
+    if(isChromium)
     {
         gamepadInput = [
             "A",
@@ -129,14 +95,45 @@ function InitButtons()
             null
         ]
     }
+    else
+    {
+        gamepadInput = [
+            "X",
+            "A",
+            "B",
+            "Y",
+            "leftBumper",
+            "rightBumper",
+            "leftTriggerButton",
+            "rightTriggerButton",
+            "select",
+            "start",
+            "leftStick",
+            "rightStick",
+            "home",
+            "touch",
+            "mic",
+            null
+        ]
+    }
 }
 
-function UpdateButton(buttonId,value)
+window.addEventListener("gamepadconnected",(e) => {
+
+    if(isChromium)
+        document.getElementsByClassName("ps")[0].disabled = true;
+
+    console.log("Gamepad connected");
+    console.log(e.gamepad);
+    InitButtons();
+    checkStatus();
+})
+function updateButton(buttonId,value)
 {   
     if(gamepadInput[buttonId] === null)
         return;
 
-    const element = document.getElementsByClassName(gamepadInput[buttonId])[0];
+    let element = document.getElementsByClassName(gamepadInput[buttonId])[0];
 
     if(value > 0)
     {
@@ -147,9 +144,9 @@ function UpdateButton(buttonId,value)
         element.classList.remove("pressed");
     }
 }
-function DpadFix(gamepad)
+function dpadFix(gamepads)
 {
-    let value = gamepad.axes[9].toFixed(5);
+    let value = gamepads[0].axes[9].toFixed(5);
 
     // default
     if(value == 1.28571)
@@ -224,70 +221,44 @@ function DpadFix(gamepad)
         document.getElementsByClassName("right")[0].classList.remove("pressed");
     }
 }
-function CheckStatus() 
+function checkStatus() 
 {
-    const gamepad = navigator.getGamepads()[0];
-    let ltValue = 0;
-    let rtValue = 0;
+    const gamepads = navigator.getGamepads();
 
-    if(isRaw)
+    if(isChromium)
     {
-        
-        // leftTrigger.innerHTML = (gamepad.axes[3]*.5+.5).toFixed(5);
-        // rightTrigger.innerHTML = (gamepad.axes[4]*.5+.5).toFixed(5);
-        ltValue = gamepad.axes[3]*0.5+0.5;
-        rtValue = gamepad.axes[4]*0.5+0.5;
-        // 0 top 100 height 0
 
+        leftTrigger.innerHTML = gamepads[0].buttons[6].value.toFixed(5);
+        rightTrigger.innerHTML = gamepads[0].buttons[7].value.toFixed(5);
 
+        leftX.innerHTML = gamepads[0].axes[0].toFixed(5);
+        leftY.innerHTML = gamepads[0].axes[1].toFixed(5);
 
-        // leftY.innerHTML = gamepad.axes[1].toFixed(5);
+        rightX.innerHTML = gamepads[0].axes[2].toFixed(5);
+        rightY.innerHTML = gamepads[0].axes[3].toFixed(5);    
+
+    }
+    else
+    {
+        leftTrigger.innerHTML = (gamepads[0].axes[3]*.5+.5).toFixed(5);
+        rightTrigger.innerHTML = (gamepads[0].axes[4]*.5+.5).toFixed(5);
     
-        // rightX.innerHTML = gamepad.axes[2].toFixed(5);
-        // rightY.innerHTML = gamepad.axes[5].toFixed(5);
+        leftX.innerHTML = gamepads[0].axes[0].toFixed(5);
+        leftY.innerHTML = gamepads[0].axes[1].toFixed(5);
+    
+        rightX.innerHTML = gamepads[0].axes[2].toFixed(5);
+        rightY.innerHTML = gamepads[0].axes[5].toFixed(5);
 
-        DpadFix(gamepad);
-    }
-    else
-    {
-        ltValue = gamepad.buttons[6].value;
-        rtValue = gamepad.buttons[7].value;
-
-        // leftTrigger.innerHTML = gamepad.buttons[6].value.toFixed(5);
-        // rightTrigger.innerHTML = gamepad.buttons[7].value.toFixed(5);
-
-        // leftX.innerHTML = gamepad.axes[0].toFixed(5);
-        // leftY.innerHTML = gamepad.axes[1].toFixed(5);
-
-        // rightX.innerHTML = gamepad.axes[2].toFixed(5);
-        // rightY.innerHTML = gamepad.axes[3].toFixed(5);    
+        dpadFix(gamepads);
     }
 
-    if(gamepad.axes[0] > 0.1 || gamepad.axes[0] < -0.1)
+    for(let i=0;i<gamepads[0].buttons.length;i++)
     {
-        const value = (gamepad.axes[0]+1)/2;
-        leftX.style.left =  ((value*100))-(3*value)+"%";
-        
-    }     
-    else
-        leftX.style.left = "48.5%";
-
-    leftTrigger.style.height=(ltValue)*100+"%";
-    leftTrigger.style.top=(1-ltValue)*100+"%";
-
-    rightTrigger.style.height=(rtValue)*100+"%";
-    rightTrigger.style.top=(1-rtValue)*100+"%";
-
-
-    for(let i=0;i<gamepad.buttons.length;i++)
-    {
-        UpdateButton(i,gamepad.buttons[i].value);
+        updateButton(i,gamepads[0].buttons[i].value);
     }
     
     // Re-execute the function with each animation frame
-    if (navigator.getGamepads().length > 0) {
-      window.requestAnimationFrame(CheckStatus);
+    if (gamepads.length > 0) {
+      window.requestAnimationFrame(checkStatus);
     }
   }
-  
-  

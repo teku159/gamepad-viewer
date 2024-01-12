@@ -25,16 +25,17 @@ div{
 }
 .triggers{
     position: relative;
-    top: 2px;
-    left: 1px;
-    height: 91px;
-    width: 545px;
+    /* position: absolute; */
+    top: 3px;
+    height: 90px;
+    width: 547px;
     /* background-color: crimson; */
 }
 .leftTrigger{
     float: left;
     position: relative;
-    left: 3px;
+    margin: 0 5px;
+    /* left: 3px; */
     top: 90%;
     height: 10%;
     width: 20px;
@@ -44,7 +45,8 @@ div{
 .rightTrigger{
     float: right;
     position: relative;
-    right: 3px;
+    margin: 0 5px;
+    /* right: 3px; */
     top: 90%;
     height: 10%;
     width: 20px;
@@ -55,12 +57,15 @@ div{
     display: none;
 }
 .analog{
-    position: relative;
-    left: -240px;
+    position: fixed;
+    top: 23px;
     /* left: -36.66666666%; */
-    height: 20px;
-    width: 180px;
-    background-color: cornsilk;
+    margin: 0 68px;
+    padding: 0 2px;
+    /* left: 68px; */
+    height: 10px;
+    width: 412px;
+    /* background-color: cornsilk; */
     /* border: 2px; */
     /* border-style: none solid solid solid; */
     /* border-color: black; */
@@ -68,10 +73,9 @@ div{
 .leftX{
     position: relative;
     background-color: red;
-    top: 30%;
-    left: 47%;
-    height: 10px;
-    width: 10px;
+    left: 48.5%;
+    height: 8px;
+    width: 8px;
     padding: 0px;
     margin: 0px;
     border-radius: 25px;

@@ -266,10 +266,11 @@ function CheckStatus()
     if(gamepad.axes[0] > 0.1 || gamepad.axes[0] < -0.1)
     {
         const value = (gamepad.axes[0]+1)/2;
-        leftX.style.left =  ((value*100)-(6*value))+"%";
+        leftX.style.left =  ((value*100))-(3*value)+"%";
+        
     }     
     else
-        leftX.style.left = "47%";
+        leftX.style.left = "48.5%";
 
     leftTrigger.style.height=(ltValue)*100+"%";
     leftTrigger.style.top=(1-ltValue)*100+"%";

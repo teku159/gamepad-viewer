@@ -34,22 +34,22 @@ div{
 .leftTrigger{
     float: left;
     position: relative;
-    margin: 0 5px;
+    margin: 0 7.5px;
     /* left: 3px; */
     top: 90%;
     height: 10%;
-    width: 20px;
+    width: 15px;
     background-color: white;
 }
 
 .rightTrigger{
     float: right;
     position: relative;
-    margin: 0 5px;
+    margin: 0 7.5px;
     /* right: 3px; */
     top: 90%;
     height: 10%;
-    width: 20px;
+    width: 15px;
     background-color: white;
 }
 

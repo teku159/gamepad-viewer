@@ -11,7 +11,7 @@ div#gamepad{
     width: 547px;
     /* height: 151px; */
     height: 96px;
-    background-image: url("bg-w.svg");
+    background-image: url("bg.svg");
     background-repeat: no-repeat;
 }
 
@@ -34,22 +34,22 @@ div{
 .leftTrigger{
     float: left;
     position: relative;
-    margin: 0 7.5px;
+    margin: 0 5px;
     /* left: 3px; */
     top: 90%;
     height: 10%;
-    width: 15px;
+    width: 20px;
     background-color: white;
 }
 
 .rightTrigger{
     float: right;
     position: relative;
-    margin: 0 7.5px;
+    margin: 0 5px;
     /* right: 3px; */
     top: 90%;
     height: 10%;
-    width: 15px;
+    width: 20px;
     background-color: white;
 }
 
@@ -96,16 +96,39 @@ div{
     display: none;
 }
 .face{
-    top: 20px;
-    height: 40px;
-    width: 180px;
-    position: relative;
-    left: -420px;
-    background-color: dodgerblue;
+	position: relative;
+	top: -70px;
+	left: 390px;
+	height: 75px;
+	width: 75px;
+    /* top: 20px; */
+    /* height: 40px; */
+    /* width: 180px; */
+    /* left: -420px; */
+    /* background-color: dodgerblue; */
 }
 .A, .B, .X, .Y{
-    height: 40px;
-    width: 45px;
+	position: absolute;
+	height: 25px;
+	width: 25px;
+    /* height: 40px; */
+    /* width: 45px; */
+}
+.A{
+	top: 50px;
+	left: 25px;
+}
+.B{
+	top: 25px;
+	left: 50px;
+}
+.X{
+	top: 25px;
+	left: 0px;
+}
+.Y{
+	top: 0px;
+	left: 25px;
 }
 .dpad{
     display: none;

@@ -3,13 +3,13 @@ body {
     margin: 0px;
     padding: 0px;
     background-color: darkgray;
+    width: 597px;
+    height: 146px;
 }
 
 div#gamepad{
-    margin: 5%;
-    /* width: 744px; */
+    margin: 25px;
     width: 547px;
-    /* height: 151px; */
     height: 96px;
     background-image: url("bg-w.svg");
     background-repeat: no-repeat;
@@ -19,17 +19,16 @@ div{
     float: left;
     height: 25px;
     width: 25px;
+    text-align: center;
 }
 .pressed{
-    background-color: goldenrod;
+    background-color: white;
 }
 .triggers{
     position: relative;
-    /* position: absolute; */
     top: 3px;
     height: 90px;
     width: 547px;
-    /* background-color: crimson; */
 }
 .leftTrigger{
     float: left;
@@ -46,7 +45,6 @@ div{
     float: right;
     position: relative;
     margin: 0 5px;
-    /* right: 3px; */
     top: 90%;
     height: 10%;
     width: 20px;
@@ -59,16 +57,10 @@ div{
 .analog{
     position: fixed;
     top: 23px;
-    /* left: -36.66666666%; */
     margin: 0 68px;
     padding: 0 2px;
-    /* left: 68px; */
     height: 10px;
     width: 412px;
-    /* background-color: cornsilk; */
-    /* border: 2px; */
-    /* border-style: none solid solid solid; */
-    /* border-color: black; */
 }
 .leftX{
     position: relative;
@@ -95,43 +87,40 @@ div{
 .sticks{
     display: none;
 }
-.face{
-	position: relative;
-	top: -70px;
-	left: 390px;
+.face, .dpad{
+	display: none; //disable
+	position: absolute;
 	height: 75px;
 	width: 75px;
-    /* top: 20px; */
-    /* height: 40px; */
-    /* width: 180px; */
-    /* left: -420px; */
-    /* background-color: dodgerblue; */
+	margin: 0px 120px;
+	margin-top: 20px;
 }
-.A, .B, .X, .Y{
+.face{
+	right: 0;
+}
+.dpad{
+	left: 0;
+}
+.A, .B, .X, .Y, .up, .down, .left, .right{
 	position: absolute;
 	height: 25px;
 	width: 25px;
-    /* height: 40px; */
-    /* width: 45px; */
 }
-.A{
+.A, .down{
 	top: 50px;
 	left: 25px;
 }
-.B{
+.B, .right{
 	top: 25px;
 	left: 50px;
 }
-.X{
+.X, .left{
 	top: 25px;
 	left: 0px;
 }
-.Y{
+.Y, .up{
 	top: 0px;
 	left: 25px;
-}
-.dpad{
-    display: none;
 }
 .special{
     display: none;

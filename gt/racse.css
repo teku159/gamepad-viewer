@@ -11,7 +11,7 @@ div#gamepad{
     width: 547px;
     /* height: 151px; */
     height: 96px;
-    background-image: url("bg.svg");
+    background-image: url("bg-w.svg");
     background-repeat: no-repeat;
 }
 

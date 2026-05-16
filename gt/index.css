@@ -109,6 +109,8 @@ div{
     display: block;
     background-image: url("hbrake.svg");
     background-repeat: no-repeat;
+	background-position: center;
+    background-size: 60%;
 }   
 .B{
 	right: 25px;
@@ -117,6 +119,8 @@ div{
     display: block;
     background-image: url("plus.svg");
     background-repeat: no-repeat;
+	background-position: center;
+    background-size: 75%;
 }
 .X{
 	left: 25px;
@@ -125,6 +129,8 @@ div{
     display: block;
     background-image: url("minus.svg");
     background-repeat: no-repeat;
+	background-position: center;
+    background-size: 75%;
 }
 .Y{
 	display: none;
